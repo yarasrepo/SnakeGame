@@ -2,6 +2,9 @@
 #define SNAKE_H
 #include <windows.h>
 
+#define WIDTH 50
+#define HEIGHT 25
+ 
 class Snake{
 private:
     COORD pos;
@@ -14,5 +17,8 @@ public:
     void changeDir(char dir);
     void moveSnake();
     COORD getPos();
+    bool eaten( COORD foodPos);
+    void grow();
+    bool collided();
 };
 #endif

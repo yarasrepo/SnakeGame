@@ -31,3 +31,15 @@ void Snake::moveSnake(){
 COORD Snake::getPos(){
     return pos;
 } 
+
+bool Snake::eaten( COORD foodPos){
+    return (foodPos.X == pos.X && foodPos.Y == pos.Y);
+}
+
+void Snake:: grow(){
+    len= len+1;
+}
+
+bool Snake:: collided(){
+    return (pos.X < 1 || pos.X > WIDTH-2 || pos.Y <1 || pos.Y > HEIGHT-2);
+}
