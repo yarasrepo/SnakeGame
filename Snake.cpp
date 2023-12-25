@@ -5,6 +5,7 @@ Snake:: Snake (COORD pos, int vel){
     this->vel=vel;
     len=1;
     direction= 'n';
+    body.push_back(pos);
 }
 
 void Snake::changeDir(char dir){
@@ -26,6 +27,16 @@ void Snake::moveSnake(){
             pos.X += vel;
             break;
     }
+
+    body.push_back(pos);
+
+    if (body.size() > len){
+        body.erase(body.begin());
+    }
+}
+
+vector<COORD> Snake:: getBody(){
+    return body;
 }
 
 COORD Snake::getPos(){
@@ -41,5 +52,13 @@ void Snake:: grow(){
 }
 
 bool Snake:: collided(){
-    return (pos.X < 1 || pos.X > WIDTH-2 || pos.Y <1 || pos.Y > HEIGHT-2);
+    if (pos.X < 1 || pos.X > WIDTH-2 || pos.Y <1 || pos.Y > HEIGHT-2)
+        return true;
+    
+    for (int i=0; i<len-1; i++){
+        if (pos.X == body[i].X && pos.Y == body[i].Y)
+            return true;
+    }
+
+    return false;
 }

@@ -4,8 +4,8 @@
 #include <windows.h>
 #include <cstdlib>
 
-#define WIDTH 50
-#define HEIGHT 25
+#define WIDTH 75
+#define HEIGHT 35
 
 class Food{
 
